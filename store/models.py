@@ -11,8 +11,9 @@ class Collection(models.Model):
 class Product(models.Model):
     # sku = models.CharField(max_length=10, primary_key=True) , this will create a id field with sku and django will not create its own id field 
     title = models.CharField(max_length=255) # varchar(255) in db
+    slug = models.SlugField()
     description = models.TextField()
-    price = models.DecimalField(max_digits=6, decimal_places=2)
+    unit_price = models.DecimalField(max_digits=6, decimal_places=2)
     inventory = models.IntegerField()
     last_update = models.DateTimeField(auto_now=True) # auto_now will update date time every tie we edit or update
     collection = models.ForeignKey('Collection', on_delete=models.PROTECT)
